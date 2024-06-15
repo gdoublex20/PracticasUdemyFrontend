@@ -19,13 +19,16 @@ import { ImageModule } from 'primeng/image';
 import { LoaderComponent } from './components/loader/loader/loader.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { PasswordModule } from 'primeng/password';
+import { ModalEliminarComponent } from './components/modal-eliminar/modal-eliminar.component';
+import { MoldaEliminarService } from './services/modalEliminar/molda-eliminar.service';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ModalGeneralComponent,
     UploadImageComponent,
-    LoaderComponent
+    LoaderComponent,
+    ModalEliminarComponent
   ],
   imports: [
     CommonModule,
@@ -45,11 +48,13 @@ import { PasswordModule } from 'primeng/password';
 
   ],
   providers: [
-    ModalGeneralService // Asegúrate de proporcionar el servicio aquí
+    ModalGeneralService,
+    MoldaEliminarService
   ],
   exports: [
     HeaderComponent,
     ModalGeneralComponent,
+    ModalEliminarComponent,
     LoaderComponent
   ]
 })

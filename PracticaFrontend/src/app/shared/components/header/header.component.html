@@ -3,7 +3,7 @@
         <p-avatar [image]="usuario.avatar" size="large" shape="circle" (click)="toggleMenu($event)"></p-avatar>
         <p-menu #menu [model]="items" [popup]="true"></p-menu>
         <span class="font-bold pl-3">
-            {{this.usuario.name}}
+            {{usuario.name + ' ' + usuario.lastname}}
         </span>
     </div>
 </div>

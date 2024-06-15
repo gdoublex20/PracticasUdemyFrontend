@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
 import { LoaderService } from '../../services/loader/loader.service';
 import { ModalGeneralService } from '../../services/modal/modal-general.service';
+import { RefrescarTablaService } from '../../services/refrescarTabla/refrescar-tabla.service';
 
 @Component({
   selector: 'app-header',
@@ -25,13 +26,17 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private router: Router, 
     private loaderService: LoaderService,
-    private modalService: ModalGeneralService
+    private modalService: ModalGeneralService,
+    private refrescarTabla: RefrescarTablaService
      ) { }
 
   toggleMenu(event: any) {
     this.menu.toggle(event);
   }
   ngOnInit(): void {
+    this.refrescarTabla.comunicador().subscribe(() => {
+      this.findUser();
+    })
     this.findUser();
   }
 

@@ -8,6 +8,7 @@ import { UploadImageComponent } from '../upload-image/upload-image.component';
 import { Message, MessageService } from 'primeng/api';
 import { ToasterService } from '../../services/toaster/toaster.service';
 import { LoaderService } from '../../services/loader/loader.service';
+import { RefrescarTablaService } from '../../services/refrescarTabla/refrescar-tabla.service';
 
 @Component({
   selector: 'app-modal-general',
@@ -38,7 +39,9 @@ export class ModalGeneralComponent {
     private fb: FormBuilder, 
     private userService: UserService, 
     private messageService: ToasterService,
-    private loadingService: LoaderService 
+    private loadingService: LoaderService,
+    private refrescarTablaService: RefrescarTablaService
+
   ) 
   {
     
@@ -141,13 +144,12 @@ export class ModalGeneralComponent {
     };
 
    this.userService.createUser(usuario).subscribe({next: response => {
-      // manejar la respuesta del inicio de sesión según lo necesites
-      this.usuarioForm.reset();
+    this.refrescarTablaService.accionador();
+    this.usuarioForm.reset();
       this.uploadImageComponent.removeImage();
-      this.loadingService.hideLoader(); // Ocultar el spinner de carga al recibir la respuesta
+      this.loadingService.hideLoader();
       this.messageService.showSuccess('Usuario agregado con exito');
     }, error: error => {
-      // manejar errores de inicio de sesión
       console.error('Login error:', error);
     }});
   }
@@ -172,8 +174,9 @@ export class ModalGeneralComponent {
       role: this.usuarioForm.value.role
     };    
     this.userService.updateUser(usuario, this.usuario.id).subscribe({next: response => {
-      // manejar la respuesta del inicio de sesión según lo necesites
-      this.loadingService.hideLoader(); // Ocultar el spinner de carga al recibir la respuesta
+
+      this.refrescarTablaService.accionador();
+      this.loadingService.hideLoader();
       this.messageService.showSuccess('Se ha realizado la edicion con exito');
       
     }, error: error => {

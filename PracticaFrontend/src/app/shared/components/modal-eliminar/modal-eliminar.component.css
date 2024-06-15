@@ -1,0 +1,30 @@
+.contenedorP {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.contenedorBotones {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+p-button {
+    width: 150px;
+}
+.field.grid {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.col {
+    flex: 0 0 auto; /* Ajusta el tamaño automáticamente */
+    margin-right: 10px; /* Espacio entre el icono y el label */
+}
+
+.col-fixed {
+    flex: 1; /* Ocupa todo el espacio restante */
+}
+

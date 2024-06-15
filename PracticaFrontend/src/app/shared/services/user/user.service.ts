@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Usuario } from 'src/app/core/models/usuario';
 
 @Injectable({
@@ -60,6 +60,19 @@ export class UserService {
     );
   }
 
+  findById(id: number): Observable<Usuario> {
+    const url = `${this.apiUrl}/${id}`;
+    
+    const token = JSON.parse(localStorage.getItem('currentUser') || '{}')?.token;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Usuario>(url, { headers }).pipe(
+      map((response: any) => response)
+    );
+  }
+
     createUser(user: any): Observable<Usuario>{
       const url = `${this.apiUrl}/create`;
       const token = JSON.parse(localStorage.getItem('currentUser') || '{}')?.token;
@@ -85,6 +98,18 @@ export class UserService {
       user.lastDate = this.formatDate(user.lastDate);
       return this.http.put<Usuario>(url ,user ,{ headers }).pipe(
         map((response: any) => response)
+      );
+    }
+
+    deleteUser(usuarioId: any): Observable<Usuario>{
+      const url = `${this.apiUrl}/delete/${usuarioId}`;
+      const token = JSON.parse(localStorage.getItem('currentUser') || '{}')?.token;
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      return this.http.delete<Usuario>(url, { headers }).pipe(
+        tap((response: any) => response)
       );
     }
 

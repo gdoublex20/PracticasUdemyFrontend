@@ -36,7 +36,7 @@
                     <td>
                         <p-button class="button-padding" title='Ver Usuario' icon="pi pi-eye" (onClick)="abrirModalVerDetalle(usuario)" [rounded]="true" [text]="true" [raised]="true" />
                         <p-button class="button-padding" title='Editar Usuario' icon="pi pi-user-edit" (onClick)="abrirModalEditarUsuario(usuario)" severity="secondary" [rounded]="true" [text]="true" [raised]="true" />
-                        <p-button class="button-padding" title='Eliminar Usuario' icon="pi pi-trash" severity="danger" [rounded]="true" [text]="true" [raised]="true" />
+                        <p-button class="button-padding" title='Eliminar Usuario' icon="pi pi-trash" (onClick)="EliminarUsuarioDialog(usuario)" severity="danger" [rounded]="true" [text]="true" [raised]="true" />
                     </td>
                     
             </ng-template>

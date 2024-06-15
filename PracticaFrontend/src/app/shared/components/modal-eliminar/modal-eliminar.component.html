@@ -1,0 +1,14 @@
+<div class="contenedorP">
+    <div class="field grid align-center">
+        <div class="col">
+            <i class="pi pi-exclamation-circle" style="color: red; font-size: 40px;"></i>
+        </div>
+        <label for="firstname3" class="col-fixed">
+            <p>¿Seguro de que quieres eliminar este usuario?</p>
+        </label>
+    </div>    
+    <div class="contenedorBotones">
+        <p-button label="Aceptar" icon="pi pi-check" [text]="true" severity="success" (onClick)="validarUsuarioLogeado()"></p-button>
+        <p-button label="Cancelar" icon="pi pi-times" [text]="true" severity="danger" (onClick)="cerrarModal()"></p-button>
+    </div>
+</div>

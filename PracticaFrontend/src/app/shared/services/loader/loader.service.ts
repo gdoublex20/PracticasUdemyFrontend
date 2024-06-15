@@ -17,4 +17,6 @@ export class LoaderService {
   hideLoader(showTime?:any) {
     this.showTimeout = setTimeout(() => {
       this.loadingSubject.next(false);
-    }, showTime);  }}
+    }, showTime); 
+   }
+  }

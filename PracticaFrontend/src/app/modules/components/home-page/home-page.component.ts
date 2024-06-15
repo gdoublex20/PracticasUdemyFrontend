@@ -6,6 +6,8 @@ import { ModalGeneralComponent } from 'src/app/shared/components/modal-general/m
 import { ModalGeneralService } from 'src/app/shared/services/modal/modal-general.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { LoaderService } from 'src/app/shared/services/loader/loader.service';
+import { MoldaEliminarService } from 'src/app/shared/services/modalEliminar/molda-eliminar.service';
+import { RefrescarTablaService } from 'src/app/shared/services/refrescarTabla/refrescar-tabla.service';
 
 @Component({
   selector: 'app-home-page',
@@ -23,11 +25,19 @@ export class HomePageComponent implements OnInit{
   constructor(
     private usuariosService: UserService, 
     private modalService: ModalGeneralService, 
-    private loaderService: LoaderService){}
+    private modalEliminar: MoldaEliminarService,
+    private loaderService: LoaderService,
+    private refrescarTabla: RefrescarTablaService
+    ){}
 
   ngOnInit(): void {
+    this.refrescarTabla.comunicador().subscribe(() => {
+      this.findAll();
+    })
     this.findAll();
   }
+
+
 
   findAll(){
     this.loaderService.showLoader();
@@ -40,7 +50,7 @@ export class HomePageComponent implements OnInit{
   openModal() {
     const tipoOperacion: string = 'Agregar';
     const title: string = 'Agregar Usuario'
-    this.modalService.openModal(title, tipoOperacion); // Llama al método openModal del servicio para abrir el modal
+    this.modalService.openModal(title, tipoOperacion); 
   }
 
   abrirModalVerDetalle(usuario: Usuario) 
@@ -59,8 +69,8 @@ export class HomePageComponent implements OnInit{
 
   EliminarUsuarioDialog(usuario: Usuario) 
   {
-    const tipoOperacion: string = 'Editar';
-    const title: string = 'Editar Perfil Del Usuario';
-    this.modalService.openModal(title, tipoOperacion, usuario);
+    const tipoOperacion: string = 'Eliminar';
+    const title: string = 'Eliminar Usuario';
+    this.modalEliminar.openModal(title, tipoOperacion, usuario);
   }
 }
