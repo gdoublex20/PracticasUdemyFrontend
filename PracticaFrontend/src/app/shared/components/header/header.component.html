@@ -1,0 +1,9 @@
+<div class="contenedorPrincipal">
+    <div *ngIf="usuario" class="flex align-items-center  justify-content-end pr-6 pt-1 pb-1">
+        <p-avatar [image]="usuario.avatar" size="large" shape="circle" (click)="toggleMenu($event)"></p-avatar>
+        <p-menu #menu [model]="items" [popup]="true"></p-menu>
+        <span class="font-bold pl-3">
+            {{this.usuario.name}}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="contenedorP">
+<p-card >
+    <form [formGroup]="usuarioForm" (ngSubmit)="btnGuardar()">
+        <div class="formgrid grid">
+            <div class="field col-12 md:col-6">
+                <label for="name">Nombre</label>
+                <input id="name" formControlName="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                <small *ngIf="usuarioForm.get('name')?.invalid && usuarioForm.get('name')?.touched">
+                    El nombre es requerido.
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label for="lastname">Apellidos</label>
+                <input id="lastname" formControlName="lastname" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                <small *ngIf="usuarioForm.get('lastname')?.invalid && usuarioForm.get('lastname')?.touched">
+                    El apellido es requerido.
+                </small>
+            </div>
+            <div class="field col-12">
+                <label for="email">Correo</label>
+                <input id="email" formControlName="email" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                <small *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
+                    El correo es requerido.
+                </small>
+            </div>
+            <div class="field col-12">
+                <label for="username">Usuario</label>
+                <input id="username" formControlName="username" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                <small *ngIf="usuarioForm.get('username')?.invalid && usuarioForm.get('username')?.touched">
+                    El usuario es requerido.
+                </small>
+            </div>
+            <div class="field col-12 md:col-6" *ngIf="banderaPassword">
+                <label for="password">Contraseña</label>
+                <div class="password-container">
+                    <input id="password" formControlName="password" type="password" class="text-base text-color surface-overlay p-2 pr-5 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    <i *ngIf="usuarioForm.get('password')?.value" class="toggle-password pi" (click)="togglePasswordVisibility('password')" [ngClass]="{'pi-eye': !passwordVisible, 'pi-eye-slash': passwordVisible}"></i>
+                </div>
+                <small *ngIf="usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched">
+                    La contraseña es requerida.
+                </small>
+                <small *ngIf="usuarioForm.get('password')?.errors?.['minlength']">
+                    Contraseña debe tener al menos 6 caracteres.
+                </small>
+            </div>
+            <div class="field col-12 md:col-6" *ngIf="banderaPassword">
+                <label for="repassword" >Repetir Contraseña</label>
+                <div class="password-container">
+                    <input id="repassword" formControlName="repassword" type="password" class="text-base text-color surface-overlay p-2 pr-5 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    <i *ngIf="usuarioForm.get('repassword')?.value" class="toggle-password pi" (click)="togglePasswordVisibility('repassword')" [ngClass]="{'pi-eye': !repasswordVisible, 'pi-eye-slash': repasswordVisible}"></i>
+                </div>                
+                <small *ngIf="usuarioForm.get('repassword')?.errors?.['passwordMismatch']">
+                    Las contraseñas no coinciden.
+                </small>
+            </div>
+            
+            <div class="field col-12">
+                <label for="role">Rol</label>
+                <select id="role" formControlName="role" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                    <option>ADMIN</option>
+                    <option>RECEPCIONISTA</option>
+                </select>
+            </div>
+            <div class="field col-12">
+                <app-upload-image [verImagen]="imagen" [tipoOperacion]="tipoOp" (imagen64)="obtenerImagen64($event)" #uploadImageComponent></app-upload-image>
+            </div>
+            <div class="field col-12" *ngIf="config.data.tipoOperacion === 'Ver' || config.data.tipoOperacion === 'Editar'">
+            <p-divider align="left" >
+            <b>Informacion</b>
+            </p-divider>
+                <label for="creationDate">Fecha de alta:</label>
+                <label for="creationDate">{{ usuarioForm.get('creationDate')?.value | date:'yyyy-MM-dd HH:mm' }}</label>
+            </div>
+            <div class="field col-12" *ngIf="config.data.tipoOperacion == 'Ver'">
+                <label for="creationDate">Fecha de Modificacion: </label>
+                <label for="creationDate">{{ usuarioForm.get('lastDate')?.value | date:'yyyy-MM-dd HH:mm' }}</label>        
+            </div>
+            <div class="field col-12">
+                <p-button label="Guardar" *ngIf="this.activarBotonGuardar"  [disabled]="usuarioForm.invalid" icon="pi pi-check" class="p-button-raised p-button-rounded justify-content-center"  type="submit" id="submit"></p-button>
+              </div>
+        </div>
+    </form>
+</p-card>
+</div>

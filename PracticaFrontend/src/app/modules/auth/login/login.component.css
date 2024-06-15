@@ -1,0 +1,10 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que el contenedor ocupe toda la altura visible */
+  }
+  
+  .card {
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }

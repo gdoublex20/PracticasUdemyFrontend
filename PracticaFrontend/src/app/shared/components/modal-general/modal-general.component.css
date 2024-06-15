@@ -1,0 +1,22 @@
+.custom-messages {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000; /* Ajusta este valor según sea necesario */
+}
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-password i {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}

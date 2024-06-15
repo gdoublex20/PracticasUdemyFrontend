@@ -1,0 +1,21 @@
+<div class="contenedor">
+    <div class="card flex justify-content-center align-items-center">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <p-card header="Iniciar Sesion" [style]="{ width: '360px', 'background-color': 'rgba(255, 255, 255, 0.4)'}">
+          <div class="field">
+            <label for="username">Usuario</label>
+            <input id="username" type="text" formControlName="username" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          </div>
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <input id="password" type="password" formControlName="password" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          </div>
+          <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1">
+              <p-button type="submit" label="Iniciar Sesion" class="w-full" styleClass="w-full" [disabled]="loginForm.invalid"></p-button>
+            </div>
+          </ng-template>
+        </p-card>
+      </form>
+    </div>
+  </div>

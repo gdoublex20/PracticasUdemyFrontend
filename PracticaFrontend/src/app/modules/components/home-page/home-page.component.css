@@ -1,0 +1,16 @@
+.contenedorPrincipal {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 90vh; /* O ajusta la altura según tu diseño */
+  overflow-x: hidden; /* Evita el desbordamiento horizontal en el contenedor principal */
+}
+
+.contenedorSecundario {
+  width: 90%; /* Ajusta el ancho según tu diseño */
+  overflow-x: hidden; /* Evita el desbordamiento horizontal en el contenedor secundario */
+}
+
+.button-padding {
+  margin: 0 5px; /* Aplica un margen horizontal de 5px */
+}
