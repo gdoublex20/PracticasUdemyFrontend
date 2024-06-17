@@ -9,6 +9,19 @@ html, body {
   
   /* Estilos específicos para el body */
   body {
-    background: linear-gradient(to bottom, #3498db, #e74c3c);
+    background: linear-gradient(45deg, #ffffff 50%, #9c6ef7 50%);
+
   }
+
+  /* Aumentar especificidad de los estilos */
+body .p-dialog .p-dialog-header {
+  padding-bottom: 10px;
+  background-color: #e1d4fa;
+
+}
+
+body .p-dialog .p-dialog-content {
+  background-color: #e1d4fa;
+}
+
   

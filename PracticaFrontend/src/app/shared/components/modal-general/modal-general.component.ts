@@ -22,6 +22,8 @@ export class ModalGeneralComponent {
   activarBotonGuardar: boolean = true;
   nuevaImagen!:string;
   banderaPassword: boolean = true; 
+  banderaEditar: boolean = false;
+  userRole!: any;
 
   usuarios: Usuario[] = [];
   usuario!: Usuario;
@@ -51,7 +53,7 @@ export class ModalGeneralComponent {
       lastname    : [this.usuario?.lastname     || ''             , Validators.required],
       username    : [this.usuario?.username     || ''             , Validators.required],
       email       : [this.usuario?.email        || ''             , Validators.required],
-      password    : [this.usuario?.password     || ''             , [Validators.required, Validators.minLength(5)]],
+      password    : [this.usuario?.password     || ''             , [Validators.required, Validators.minLength(3)]],
       repassword  : [this.usuario?.password     || ''           , Validators.required],
       avatar      : [this.usuario?.avatar       || ''],
       creationDate: [this.usuario?.creationDate || ''],
@@ -81,6 +83,7 @@ export class ModalGeneralComponent {
         this.activarBotonGuardar = true;
     };
     
+    this.userRole = localStorage.getItem('userRole');
     
   }
 
@@ -117,12 +120,19 @@ export class ModalGeneralComponent {
     }
   }
 
+  habilitarEdicion(){
+    this.usuarioForm.enable();
+    this.messageService.showWarn('Habilitaste la edicion de perfil');
+    this.activarBotonGuardar = true;
+    this.banderaEditar = true;
+
+  }
 
   close() {
     this.ref.close();
   }
   btnGuardar() {
-    if(this.tipoOp === 2){
+    if(this.tipoOp === 2 || this.tipoOp === 1){
       this.updateUser();
     } else if (this.tipoOp === 3){
       this.createUser();
@@ -177,6 +187,7 @@ export class ModalGeneralComponent {
 
       this.refrescarTablaService.accionador();
       this.loadingService.hideLoader();
+      this.ref.close();
       this.messageService.showSuccess('Se ha realizado la edicion con exito');
       
     }, error: error => {

@@ -42,17 +42,16 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.loaderService.showLoader();
-    this.loaderService.hideLoader(1000);
-    this.showTimeout = setTimeout(() => {
+    this.loaderService.hideLoader(2000);
       localStorage.removeItem('currentUser');  
       this.router.navigate(['/auth'])
-    }, 1000);
   }
   findUser(): void {
     const username = JSON.parse(localStorage.getItem('currentUser') || '{}')?.username;
     this.userService.findByUsername(username)
       .subscribe((response: Usuario) => {
         this.usuario = response;
+        localStorage.setItem('userRole', this.usuario.role);
       });
   }
   verPerfil(){

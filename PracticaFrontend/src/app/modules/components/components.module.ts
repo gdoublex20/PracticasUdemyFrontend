@@ -13,13 +13,20 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { DialogModule } from 'primeng/dialog'; // Importar DialogModule desde PrimeNG
 import { ModalGeneralService } from 'src/app/shared/services/modal/modal-general.service';
-
+import { UserPageComponent } from './user-page/user-page.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { WorkingPageComponent } from './working-page/working-page.component';
+import { ImageModule } from 'primeng/image';
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    HomePageComponent,
+    UserPageComponent,
+    WorkingPageComponent
   ],
-  providers: [ModalGeneralService],
+  providers: [ModalGeneralService,
+    DialogService
+  ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
@@ -29,7 +36,8 @@ import { ModalGeneralService } from 'src/app/shared/services/modal/modal-general
     ButtonModule,
     SharedModule,
     SpeedDialModule,
-    DialogModule
+    DialogModule,
+    ImageModule
   ]
 })
 export class ComponentsModule { }

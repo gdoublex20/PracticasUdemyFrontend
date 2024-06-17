@@ -1,0 +1,21 @@
+<div class="contenedorP">
+    <div class="side-bar">
+        <div class="sidebarHeader">
+            <i class="pi pi-moon mr-2 " style="font-size: 1.2rem"></i>
+            <label>Practica</label>
+        </div>
+        <p></p>
+        <p-divider />
+        <div class="menuOptions">
+            <ul class="side-bar__list list-three">
+                <li *ngFor="let item of customOptions">
+                    <div class="opcion p-2" [routerLink]="item.router"
+                    [class.selected-item]="isSelected(item)">
+                        <i class="pi {{ item.icon }} pr-2"></i>
+                        {{ item.name }}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

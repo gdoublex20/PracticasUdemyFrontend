@@ -1,0 +1,16 @@
+.contenedorPrincipal {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 90vh; /* O ajusta la altura según tu diseño */
+    overflow-x: hidden; /* Evita el desbordamiento horizontal en el contenedor principal */
+  }
+  
+  .contenedorSecundario {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    opacity: 50%;
+  }
+
+  

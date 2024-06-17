@@ -5,13 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule, DatePipe } from '@angular/common';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { LoaderService } from './shared/services/loader/loader.service';
 import { SharedModule } from "./shared/shared.module";
+import { AuthInterceptor } from './core/Auth/auth.interceptor';
 
 
 
@@ -24,7 +25,12 @@ import { SharedModule } from "./shared/shared.module";
         MessageService,
         ToastModule,
         LoaderService,
-        DatePipe
+        DatePipe,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent],
     imports: [

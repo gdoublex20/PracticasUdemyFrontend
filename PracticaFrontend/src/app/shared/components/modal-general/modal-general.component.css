@@ -7,6 +7,13 @@
 .password-container {
   position: relative;
 }
+.contenedorP {
+  background-color: transparent;
+}
+
+.formulario {
+  background-color: transparent;
+}
 
 .toggle-password {
   position: absolute;
@@ -20,3 +27,5 @@
   font-size: 1.2rem;
   color: var(--text-color);
 }
+
+

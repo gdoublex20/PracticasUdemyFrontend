@@ -21,6 +21,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { PasswordModule } from 'primeng/password';
 import { ModalEliminarComponent } from './components/modal-eliminar/modal-eliminar.component';
 import { MoldaEliminarService } from './services/modalEliminar/molda-eliminar.service';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { MoldaEliminarService } from './services/modalEliminar/molda-eliminar.se
     ModalGeneralComponent,
     UploadImageComponent,
     LoaderComponent,
-    ModalEliminarComponent
+    ModalEliminarComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,8 @@ import { MoldaEliminarService } from './services/modalEliminar/molda-eliminar.se
     CardModule,
     ImageModule,
     ProgressSpinnerModule,
-    PasswordModule
+    PasswordModule,
+    SidebarModule
 
   ],
   providers: [
@@ -53,6 +57,7 @@ import { MoldaEliminarService } from './services/modalEliminar/molda-eliminar.se
   ],
   exports: [
     HeaderComponent,
+    SidebarComponent,
     ModalGeneralComponent,
     ModalEliminarComponent,
     LoaderComponent

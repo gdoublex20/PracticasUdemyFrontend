@@ -5,10 +5,19 @@
           <div class="field">
             <label for="username">Usuario</label>
             <input id="username" type="text" formControlName="username" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <small *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+              El Usuario es requerido
+            </small>
           </div>
           <div class="field">
             <label for="password">Contraseña</label>
-            <input id="password" type="password" formControlName="password" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <div class="password-container">
+                <input id="password" formControlName="password" type="password"  class="text-base text-color surface-overlay p-2 pr-5 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                <i *ngIf="loginForm.get('password')?.value" class="toggle-password pi" (click)="togglePasswordVisibility()" [ngClass]="{'pi-eye': !passwordVisible, 'pi-eye-slash': passwordVisible}"></i>
+            </div>
+            <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                La contraseña es requerida.
+            </small>
           </div>
           <ng-template pTemplate="footer">
             <div class="flex gap-3 mt-1">

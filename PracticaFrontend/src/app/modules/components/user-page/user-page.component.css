@@ -1,0 +1,60 @@
+.contenedorPrincipal {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 90vh; 
+    overflow-x: hidden; 
+    background-color: transparent;
+
+  }
+  
+  .contenedorSecundario {
+    background-color: white;
+    width: 95%; 
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6); /* Efecto de sombra */
+    overflow-x: hidden; 
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+.p-table-caption {
+  background-color: transparent; /* Color de fondo */
+  border-top-left-radius: 20px; /* Redondeado superior izquierdo */
+  border-top-right-radius: 20px; /* Redondeado superior derecho */
+}
+
+  .tabla-pequena {
+    border-radius: 20px; 
+    width: 90%;
+}
+
+.tabla-pequena th, .tabla-pequena td {
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla-pequena th,
+.tabla-pequena td {
+    font-size: 13px;
+    padding: 0.5rem; 
+}
+
+.tabla-pequena th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tabla-pequena tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabla-pequena tr:hover {
+  background-color: #ddd;
+}
+
+.button-padding {
+  margin-right: 5px;
+}
+  

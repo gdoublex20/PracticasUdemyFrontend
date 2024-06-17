@@ -1,0 +1,53 @@
+.side-bar {
+    width: 10rem;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    align-items: center;
+    height: 98vh;
+    position: fixed;
+    border-radius: 40px;
+    background-color: #9c6ef7;
+    /* background-color: red; */
+}
+.sidebarHeader{
+    display: flex;
+    margin-top: 15px;
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.menuOptions{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.opcion{
+    display: flex;
+    justify-content: center;
+    width: 10rem;
+}
+.selected-item {
+    background: linear-gradient(to right, #9c6ef7 50%, #ffffff 100%);
+  }
+
+.opcion:hover{
+    border-radius: 30px;
+    background: linear-gradient(to right, #9c6ef7 10%, #ffffff 100%);
+}
+.contenedorPrincipal {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 90vh; /* O ajusta la altura según tu diseño */
+    overflow-x: hidden; /* Evita el desbordamiento horizontal en el contenedor principal */
+  }
+
+.side-bar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.side-bar__list li {
+    cursor: pointer;
+}

@@ -1,5 +1,11 @@
 .contenedorPrincipal {
-    background-color: white;
+    background-color: transparent;
     margin: 0;
-    padding: 0;
+    padding-top: 4.6px;
+    padding-right: 10px;
+}
+.contenedorAvatar{
+    width: 20%;
+    border-radius: 40px;
+    background-color: #8667c4;
 }

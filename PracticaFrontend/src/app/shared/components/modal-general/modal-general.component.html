@@ -1,6 +1,7 @@
 <div class="contenedorP">
-<p-card >
-    <form [formGroup]="usuarioForm" (ngSubmit)="btnGuardar()">
+    <p-button *ngIf="tipoOp === 1" class=" botonEditar p-button-sm" (onClick)="habilitarEdicion()" icon="pi pi-user-edit" [rounded]="true" [text]="true" />
+    <p-card >
+    <form class="formulario" [formGroup]="usuarioForm" (ngSubmit)="btnGuardar()">
         <div class="formgrid grid">
             <div class="field col-12 md:col-6">
                 <label for="name">Nombre</label>
@@ -62,18 +63,20 @@
                 </select>
             </div>
             <div class="field col-12">
-                <app-upload-image [verImagen]="imagen" [tipoOperacion]="tipoOp" (imagen64)="obtenerImagen64($event)" #uploadImageComponent></app-upload-image>
+                <p-card header="Imagen de perfil">                
+                    <app-upload-image [verImagen]="imagen" [tipoOperacion]="tipoOp" [banderaEditar]="banderaEditar" (imagen64)="obtenerImagen64($event)" #uploadImageComponent></app-upload-image>
+                </p-card>
             </div>
-            <div class="field col-12" *ngIf="config.data.tipoOperacion === 'Ver' || config.data.tipoOperacion === 'Editar'">
+            <div class="field col-12 opacity-40" *ngIf="config.data.tipoOperacion === 'Ver' || config.data.tipoOperacion === 'Editar'">
             <p-divider align="left" >
-            <b>Informacion</b>
+            <b>Informacion de alta</b>
             </p-divider>
-                <label for="creationDate">Fecha de alta:</label>
-                <label for="creationDate">{{ usuarioForm.get('creationDate')?.value | date:'yyyy-MM-dd HH:mm' }}</label>
+                <label class="pl-2" for="creationDate">Fecha de alta:</label>
+                <label class="pl-2" for="creationDate">{{ usuarioForm.get('creationDate')?.value | date:'yyyy-MM-dd HH:mm' }}</label>
             </div>
-            <div class="field col-12" *ngIf="config.data.tipoOperacion == 'Ver'">
-                <label for="creationDate">Fecha de Modificacion: </label>
-                <label for="creationDate">{{ usuarioForm.get('lastDate')?.value | date:'yyyy-MM-dd HH:mm' }}</label>        
+            <div class="field col-12 opacity-40" *ngIf="config.data.tipoOperacion == 'Ver'">
+                <label class="pl-2" for="creationDate">Fecha de Modificacion: </label>
+                <label class="pl-2" for="creationDate">{{ usuarioForm.get('lastDate')?.value | date:'yyyy-MM-dd HH:mm' }}</label>        
             </div>
             <div class="field col-12">
                 <p-button label="Guardar" *ngIf="this.activarBotonGuardar"  [disabled]="usuarioForm.invalid" icon="pi pi-check" class="p-button-raised p-button-rounded justify-content-center"  type="submit" id="submit"></p-button>

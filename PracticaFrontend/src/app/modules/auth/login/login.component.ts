@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../../shared/services/loader/loader.service';
+import { ToasterService } from '../../../shared/services/toaster/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,22 @@ import { LoaderService } from '../../../shared/services/loader/loader.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  invalido: boolean = false;
+  passwordVisible: boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,
-    private loaderService: LoaderService) { }
+  constructor
+  (
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router,
+    private loaderService: LoaderService,
+    private toasterService: ToasterService
+    ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -40,8 +49,17 @@ export class LoginComponent {
         
         
       }, error: error => {
-        // manejar errores de inicio de sesión
+        this.loaderService.hideLoader();
+        this.toasterService.showError('Usuario o contraseña incorrecta')
         console.error('Login error:', error);
       }});
+  }
+
+  togglePasswordVisibility() {
+        this.passwordVisible = !this.passwordVisible;
+        const passwordInput = document.getElementById('password') as HTMLInputElement;
+        if (passwordInput) {
+            passwordInput.type = this.passwordVisible ? 'text' : 'password';
+        }
   }
 }

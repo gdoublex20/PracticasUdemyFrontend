@@ -1,50 +1,5 @@
+<app-sidebar></app-sidebar>
 <app-header></app-header>
-<div class="contenedorPrincipal">
-    <div class="contenedorSecundario">
-        <p-table
-        [scrollable]="true"
-          scrollHeight="300px"
-          [value]="usuarios"
-          [tableStyle]="{'min-width': '60rem'}">
-            <ng-template pTemplate="caption">
-                <div class="flex align-items-center justify-content-between">
-                    Usuarios
-                    <p-button icon="pi pi-plus" (onClick)="openModal()" />
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Fecha Alta</th>
-                    <th>Ultima Fecha</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-usuario>
-                <tr>
-                    <td>{{usuario.id}}</td>
-                    <td>{{usuario.name}}</td>
-                    <td>{{usuario.lastname}}</td>
-                    <td>{{usuario.email}}</td>
-                    <td>{{usuario.creationDate | date:'yyyy-MM-dd HH:mm' }}</td>
-                    <td>{{usuario.lastDate     | date:'yyyy-MM-dd HH:mm' }}</td>
-                    <td>{{usuario.role}}</td>
-                    <td>
-                        <p-button class="button-padding" title='Ver Usuario' icon="pi pi-eye" (onClick)="abrirModalVerDetalle(usuario)" [rounded]="true" [text]="true" [raised]="true" />
-                        <p-button class="button-padding" title='Editar Usuario' icon="pi pi-user-edit" (onClick)="abrirModalEditarUsuario(usuario)" severity="secondary" [rounded]="true" [text]="true" [raised]="true" />
-                        <p-button class="button-padding" title='Eliminar Usuario' icon="pi pi-trash" (onClick)="EliminarUsuarioDialog(usuario)" severity="danger" [rounded]="true" [text]="true" [raised]="true" />
-                    </td>
-                    
-            </ng-template>
-            <ng-template pTemplate="summary">
-                <div class="flex align-items-center justify-content-between">
-                    Total {{ usuarios ? usuarios.length : 0 }} usuarios.
-                </div>
-            </ng-template>
-        </p-table>
-    </div>
+<div class="home-wrapper">
+    <router-outlet></router-outlet>
 </div>
